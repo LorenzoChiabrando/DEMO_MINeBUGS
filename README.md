@@ -41,3 +41,18 @@ To stop the service, execute:
 ```bash
 docker compose down
 ```
+
+
+## Example Datasets
+
+The repository includes sample files to help you test the upload and mapping functionalities immediately.
+
+### Custom Diet Configuration
+* **Location:** `diet_example/true-high-fibre.json`
+* **Usage:** Use this JSON file to test the **custom diet upload** feature. It provides a template for defining a specific nutritional profile (e.g., high fibre).
+
+### Community Mapping Inputs
+* **Location:** `input_for_upload_example/`
+* **Usage:** Use these CSV files to verify the **taxonomic mapping** capabilities of the service:
+    * `big_community.csv`: A generic large dataset to test processing capacity.
+    * `multiple_sclerosis.csv`: A specific case study dataset for mapping tests.
