@@ -1,0 +1,124 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    command: postgres -c 'max_wal_size=1GB'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  db-seed:
+    image: mandringo02/db-seed:latest
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      AGORA_TABLE: ${AGORA_TABLE:-agora_models}
+
+  community-builder:
+    image: mandringo02/community-builder:latest
+    restart: always
+    environment:
+      MODELS_DIR: /data/models
+      OUTPUT_DIR: /data/output
+      TIMEOUT_SECS: 3600
+      PACKAGE_ZIP: "1"
+      HIGHS_THREADS: "0"
+      BIOMASS_FRAC: "0.80"
+      SOLVER_SCFA_FRAC: "0.80"
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    volumes:
+      - shared-tmp:/data/tmp
+      - models_cache:/data/models:ro
+      - builder-output:/data/output
+    ports:
+      - "8011:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      db-seed:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  diet-standardizer:
+    image: mandringo02/diet-standardizer:latest
+    restart: always
+    ports:
+      - "8012:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  taxa-mapping:
+    image: mandringo02/taxa-mapping:latest
+    restart: always
+    environment:
+      OUTPUT_DIR: /app/results
+      MODELS_CSV_PATH: /app/refs/mat_files_list.csv
+      NCBI_CACHE_PATH: /app/refs/.ncbi_cache.json
+      N_JOBS: "-2"
+    ports:
+      - "8013:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    image: mandringo02/web:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - INTERNAL_WEB_BASE=http://web:3000
+      - COMMUNITY_BUILDER_URL=http://community-builder:8000
+      - NEXT_PUBLIC_COMMUNITY_BUILDER_URL=${NEXT_PUBLIC_COMMUNITY_BUILDER_URL:-http://localhost:8011}
+      - NCBI_SERVICE_URL=http://taxa-mapping:8000
+      - NEXT_PUBLIC_ENTREZ_EMAIL=${NEXT_PUBLIC_ENTREZ_EMAIL}
+      - DIET_STD_URL=http://diet-standardizer:8000
+      - DATABASE_URL_INTERNAL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - AGORA_TABLE=${AGORA_TABLE}
+      - LOG_AGORA_DEBUG=0
+      - SSE_HEARTBEAT_MS=15000
+    volumes:
+      - shared-tmp:/data/tmp
+      - models_cache:/data/models
+    depends_on:
+      taxa-mapping:
+        condition: service_healthy
+      diet-standardizer:
+        condition: service_healthy
+      db-seed:
+        condition: service_completed_successfully
+      community-builder:
+        condition: service_healthy
+
+volumes:
+  db-data:
+  shared-tmp:
+  models_cache:
+  builder-output:

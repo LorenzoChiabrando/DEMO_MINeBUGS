@@ -1,0 +1,1040 @@
+{
+  "label": "TRUE HIGH FIBRE",
+  "source": "custom",
+  "baseLabel": "TRUE HIGH FIBRE",
+  "baseValue": "custom:true_high_fibre:mhkbr8guxjd2o4",
+  "entries": [
+    {
+      "reaction": "EX_fru(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glc(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glc_D(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gal(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_man(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_mnl(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fuc_L(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glcn(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_rmn(u)",
+      "fluxValue": "-0.03947",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arab_L(u)",
+      "fluxValue": "-0.04737",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_drib(u)",
+      "fluxValue": "-0.04737",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_rib_D(u)",
+      "fluxValue": "-0.04737",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_xyl_D(u)",
+      "fluxValue": "-0.04737",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_oxa(u)",
+      "fluxValue": "-0.11842",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lcts(u)",
+      "fluxValue": "-0.01974",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_malt(u)",
+      "fluxValue": "-0.01974",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_sucr(u)",
+      "fluxValue": "-0.01974",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_melib(u)",
+      "fluxValue": "-0.01974",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cellb(u)",
+      "fluxValue": "-0.01974",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_tre(u)",
+      "fluxValue": "-0.01974",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_strch1(u)",
+      "fluxValue": "-0.06818",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_amylopect900(u)",
+      "fluxValue": "-0.0003472222",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_amylose300(u)",
+      "fluxValue": "-0.0010416667",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arabinan101(u)",
+      "fluxValue": "-0.0036836935",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arabinogal(u)",
+      "fluxValue": "-0.0004854997",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arabinoxyl(u)",
+      "fluxValue": "-0.0067934783",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_bglc(u)",
+      "fluxValue": "-0.0000015625",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cellul(u)",
+      "fluxValue": "-0.000625",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_dextran40(u)",
+      "fluxValue": "-0.00390625",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_galmannan(u)",
+      "fluxValue": "-0.0003125",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glcmannan(u)",
+      "fluxValue": "-0.0007284382",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_homogal(u)",
+      "fluxValue": "-0.0028409091",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_inulin(u)",
+      "fluxValue": "-0.0104166667",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_kestopt(u)",
+      "fluxValue": "-0.0625",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_levan1000(u)",
+      "fluxValue": "-0.0003125",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lmn30(u)",
+      "fluxValue": "-0.0104166667",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lichn(u)",
+      "fluxValue": "-0.0018382353",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pect(u)",
+      "fluxValue": "-0.000739645",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pullulan1200(u)",
+      "fluxValue": "-0.0002604167",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_raffin(u)",
+      "fluxValue": "-0.1041666667",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_rhamnogalurI(u)",
+      "fluxValue": "-0.0003210616",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_rhamnogalurII(u)",
+      "fluxValue": "-0.0059148265",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_starch1200(u)",
+      "fluxValue": "-0.0002604167",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_xylan(u)",
+      "fluxValue": "-0.0007102273",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_xyluglc(u)",
+      "fluxValue": "-0.0002912395",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arachd(u)",
+      "fluxValue": "-0.001664",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_chsterol(u)",
+      "fluxValue": "-0.002479",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glyc(u)",
+      "fluxValue": "-0.899827",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_hdca(u)",
+      "fluxValue": "-0.198185",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_hdcea(u)",
+      "fluxValue": "-0.018258",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lnlc(u)",
+      "fluxValue": "-0.179555",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lnlnca(u)",
+      "fluxValue": "-0.008783",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lnlncg(u)",
+      "fluxValue": "-0.008783",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ocdca(u)",
+      "fluxValue": "-0.084641",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ocdcea(u)",
+      "fluxValue": "-0.340722",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_octa(u)",
+      "fluxValue": "-0.006471",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ttdca(u)",
+      "fluxValue": "-0.034338",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ala_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ser_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cys_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arg_L(u)",
+      "fluxValue": "-0.15",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ile_L(u)",
+      "fluxValue": "-0.15",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_leu_L(u)",
+      "fluxValue": "-0.15",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lys_L(u)",
+      "fluxValue": "-0.15",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_his_L(u)",
+      "fluxValue": "-0.15",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_asn_L(u)",
+      "fluxValue": "-0.225",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_asp_L(u)",
+      "fluxValue": "-0.225",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_thr_L(u)",
+      "fluxValue": "-0.225",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glu_L(u)",
+      "fluxValue": "-0.18",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_met_L(u)",
+      "fluxValue": "-0.18",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gln_L(u)",
+      "fluxValue": "-0.18",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pro_L(u)",
+      "fluxValue": "-0.18",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_val_L(u)",
+      "fluxValue": "-0.18",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_phe_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_tyr_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gly(u)",
+      "fluxValue": "-0.45",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_trp_L(u)",
+      "fluxValue": "-0.08182",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_thm(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ribflv(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_nac(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_btn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pnto_R(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pydxn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pydx(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pydam(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fol(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_adpcbl(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pheme(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cbl1(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_chol(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_h2s(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_so4(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_spmd(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_na1(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ca2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cobalt2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cl(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_k(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fe2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fe3(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fe3dcit(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_mg2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_mn2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_mobd(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cu2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_zn2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_sel(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pime(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_mqn8(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_12dgr180(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_26dap_M(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_2obut(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_3mop(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_4hbz(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ac(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_acgam(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_acnam(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_acmana(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ade(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_adn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ala_D(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_arab_D(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cgly(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_chor(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cit(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_amet(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_csn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_cytd(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_dad_2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_dcyt(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ddca(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_dgsn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_etoh(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_for(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fum(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glyc3p(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glyleu(u)",
+      "fluxValue": "-2",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gsn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gthox(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gua(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_h(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_hom_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_hxan(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_indole(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ins(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_lanost(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_metsox_S_L(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_mqn7(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ncam(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_nmn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_no3(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_orn(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pi(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ptrc(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_pydx5p(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_q8(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_sheme(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_thymd(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_ura(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_uri(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_xan(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_2dmmq8(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_4abz(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_amp(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_fald(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gam(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_glu_D(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_gthrd(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_h2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_no2(u)",
+      "fluxValue": "-1",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_meoh(u)",
+      "fluxValue": "-10",
+      "metabolite": "—",
+      "extraContext": null
+    },
+    {
+      "reaction": "EX_h2o(u)",
+      "fluxValue": "-10",
+      "metabolite": "—",
+      "extraContext": null
+    }
+  ]
+}
