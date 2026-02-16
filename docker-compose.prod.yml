@@ -1,0 +1,241 @@
+services:
+  # ==========================================
+  # 1. INFRASTRUCTURE LAYER
+  # ==========================================
+
+  # Database (diets, agora, simulation, mapping-jobs)
+  db:
+    image: postgres:16-alpine
+    container_name: minebugs-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${PORT_DB_DEBUG}:5432"
+    volumes:
+      - db_data_prod:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - minebugs-net
+
+  # Database Seeder
+  db-seeder:
+    image: mandringo02/minebugs-demo-v2-db-seeder:latest
+    container_name: minebugs-db-seeder
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: minebugs-db
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
+    networks:
+      - minebugs-net
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: minebugs-queue
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - "${PORT_RABBIT_MGMT}:15672"
+      - "5672:5672"
+    volumes:
+      - rabbit_data_prod:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - minebugs-net
+
+  # MinIO
+  minio:
+    image: minio/minio:latest
+    container_name: minebugs-minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data_prod:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - minebugs-net
+
+  # MinIO Seeder (agora models)
+  minio-seeder:
+    image: mandringo02/minebugs-demo-v2-minio-seeder:latest
+    container_name: minebugs-minio-seeder
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      MINIO_ENDPOINT: http://minebugs-minio:9000
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+    volumes:
+      - minio_zip_cache:/cache
+    networks:
+      - minebugs-net
+
+  # ==========================================
+  # 2. APPLICATION LAYER
+  # ==========================================
+
+  # Spring Boot Backend
+  backend:
+    image: mandringo02/minebugs-demo-v2-backend:latest
+    container_name: minebugs-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      db-seeder:
+        condition: service_completed_successfully
+      minio-seeder:
+        condition: service_completed_successfully
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILE}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://minebugs-db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_RABBITMQ_HOST: minebugs-queue
+      RABBITMQ_EXCHANGE: ${RABBITMQ_EXCHANGE}
+      RABBITMQ_QUEUE_MAPPING: ${RABBITMQ_QUEUE_MAPPING}
+      RABBITMQ_ROUTING_MAPPING: ${RABBITMQ_ROUTING_MAPPING}
+      MINIO_URL: http://minebugs-minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+      APP_WORKER_TOKEN: ${APP_WORKER_TOKEN}
+    networks:
+      - minebugs-net
+
+  # Next.js Frontend
+  frontend:
+    image: mandringo02/minebugs-demo-v2-frontend:latest
+    container_name: minebugs-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      INTERNAL_BACKEND_URL: http://minebugs-backend:8080
+    networks:
+      - minebugs-net
+
+  # Nginx Gateway
+  nginx:
+    image: mandringo02/minebugs-demo-v2-gateway:latest
+    container_name: minebugs-gateway
+    restart: unless-stopped
+    ports:
+      - "${PORT_HTTP}:80"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - minebugs-net
+
+  # ==========================================
+  # 3. WORKERS LAYER
+  # ==========================================
+
+  # Taxa Mapping Worker
+  worker-mapping:
+    image: mandringo02/minebugs-demo-v2-worker-mapping:latest
+    container_name: minebugs-worker-mapping
+    restart: unless-stopped
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    environment:
+      RABBITMQ_HOST: minebugs-queue
+      RABBITMQ_EXCHANGE: ${RABBITMQ_EXCHANGE}
+      RABBITMQ_QUEUE_MAPPING: ${RABBITMQ_QUEUE_MAPPING}
+      RABBITMQ_ROUTING_MAPPING: ${RABBITMQ_ROUTING_MAPPING}
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT}
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+      MINIO_SECURE: "False"
+      BACKEND_BASE_URL: ${BACKEND_BASE_URL}
+      APP_WORKER_TOKEN: ${APP_WORKER_TOKEN}
+      AGORA_MODELS_PATH: /app/ref_data/mat_files_list.csv
+      NCBI_CACHE_PATH: /app/ref_data/ncbi_cache.json
+    networks:
+      - minebugs-net
+
+  # Simulation Worker
+  worker-simulation:
+    image: mandringo02/minebugs-demo-v2-worker-simulation:latest
+    container_name: minebugs-worker-simulation
+    restart: unless-stopped
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      backend:
+        condition: service_started
+      minio-seeder:
+        condition: service_completed_successfully
+    environment:
+      RABBITMQ_HOST: minebugs-queue
+      RABBITMQ_EXCHANGE: ${RABBITMQ_EXCHANGE}
+      RABBITMQ_QUEUE_SIMULATION: ${RABBITMQ_QUEUE_SIMULATION}
+      RABBITMQ_ROUTING_SIMULATION: ${RABBITMQ_ROUTING_SIMULATION}
+      BACKEND_BASE_URL: ${BACKEND_BASE_URL}
+      APP_WORKER_TOKEN: ${APP_WORKER_TOKEN}
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT}
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+      MINIO_SECURE: "False"
+      MINIO_BUCKET_REF: ${MINIO_BUCKET_REF}
+      AGORA_ZIP_KEY: ${AGORA_ZIP_KEY}
+      WORK_DIR_BASE: ${WORK_DIR_BASE}
+      AGORA_MODELS_PATH: ${AGORA_MODELS_PATH}
+      SOLVER_BINARY_PATH: ${SOLVER_BINARY_PATH}
+    networks:
+      - minebugs-net
+
+# ==========================================
+# 4. VOLUMES
+# ==========================================
+
+volumes:
+  db_data_prod:
+  rabbit_data_prod:
+  minio_data_prod:
+  minio_zip_cache:
+
+networks:
+  minebugs-net:
+    driver: bridge
