@@ -1,18 +1,11 @@
 services:
-  # ==========================================
-  # 1. INFRASTRUCTURE LAYER
-  # ==========================================
-
-  # Database (diets, agora, simulation, mapping-jobs)
   db:
-    image: postgres:16-alpine
+    image: mandringo02/minebugs-demo-v2-postgres:latest
     container_name: minebugs-db
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "${PORT_DB_DEBUG}:5432"
     volumes:
       - db_data_prod:/var/lib/postgresql/data
     healthcheck:
@@ -23,7 +16,6 @@ services:
     networks:
       - minebugs-net
 
-  # Database Seeder
   db-seeder:
     image: mandringo02/minebugs-demo-v2-db-seeder:latest
     container_name: minebugs-db-seeder
@@ -38,16 +30,12 @@ services:
     networks:
       - minebugs-net
 
-  # RabbitMQ
   rabbitmq:
     image: rabbitmq:3-management
     container_name: minebugs-queue
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
-    ports:
-      - "${PORT_RABBIT_MGMT}:15672"
-      - "5672:5672"
     volumes:
       - rabbit_data_prod:/var/lib/rabbitmq
     healthcheck:
@@ -58,95 +46,152 @@ services:
     networks:
       - minebugs-net
 
-  # MinIO
-  minio:
-    image: minio/minio:latest
-    container_name: minebugs-minio
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: minebugs-rustfs
+    user: "root"
     environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-    ports:
-      - "9000:9000"
-      - "9001:9001"
+      RUSTFS_ACCESS_KEY: ${MINIO_ROOT_USER}
+      RUSTFS_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      RUSTFS_CONSOLE_ENABLE: "true"
     volumes:
-      - minio_data_prod:/data
-    command: server /data --console-address ":9001"
+      - rustfs-data:/data
+    command: /data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 5s
+      test: [ "CMD-SHELL", "curl -sI http://127.0.0.1:9000 || exit 1" ]
+      interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 10s
     networks:
       - minebugs-net
 
-  # MinIO Seeder (agora models)
-  minio-seeder:
-    image: mandringo02/minebugs-demo-v2-minio-seeder:latest
-    container_name: minebugs-minio-seeder
+  createbuckets:
+    image: minio/mc
     depends_on:
-      minio:
+      rustfs:
         condition: service_healthy
-    environment:
-      MINIO_ENDPOINT: http://minebugs-minio:9000
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-      MINIO_BUCKET: ${MINIO_BUCKET}
-    volumes:
-      - minio_zip_cache:/cache
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        sleep 3;
+        /usr/bin/mc alias set myminio http://rustfs:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD};
+        /usr/bin/mc mb --ignore-existing myminio/${MINIO_BUCKET};
+        exit 0;
     networks:
       - minebugs-net
 
-  # ==========================================
-  # 2. APPLICATION LAYER
-  # ==========================================
+  keycloak:
+    image: mandringo02/minebugs-demo-v2-keycloak:latest
+    container_name: minebugs-keycloak
+    command: start-dev --import-realm --spi-theme-static-max-age=-1 --spi-theme-cache-themes=false --spi-theme-cache-templates=false
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db:5432/keycloak
+      KC_DB_USERNAME: ${POSTGRES_USER}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT: "false"
+      KC_HEALTH_ENABLED: "true"
+      KC_PROXY_HEADERS: "xforwarded"
+      KC_HTTP_RELATIVE_PATH: "/auth"
+    depends_on:
+      db:
+        condition: service_healthy
+      db-seeder:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+    networks:
+      - minebugs-net
 
-  # Spring Boot Backend
   backend:
     image: mandringo02/minebugs-demo-v2-backend:latest
     container_name: minebugs-backend
     restart: unless-stopped
+    extra_hosts:
+      - "localhost:host-gateway"
     depends_on:
       db:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
-      minio:
+      rustfs:
+        condition: service_healthy
+      keycloak:
         condition: service_healthy
       db-seeder:
         condition: service_completed_successfully
-      minio-seeder:
+      createbuckets:
         condition: service_completed_successfully
     environment:
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILE}
-      SPRING_DATASOURCE_URL: jdbc:postgresql://minebugs-db:5432/${POSTGRES_DB}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      
+      # --- DATABASES (User & Ref) ---
+      DB_USER_URL: jdbc:postgresql://minebugs-db:5432/${POSTGRES_DB}
+      DB_USER_USERNAME: ${POSTGRES_USER}
+      DB_USER_PASSWORD: ${POSTGRES_PASSWORD}
+      
+      DB_REF_URL: jdbc:postgresql://minebugs-db:5432/${POSTGRES_DB}
+      DB_REF_USERNAME: ${POSTGRES_USER}
+      DB_REF_PASSWORD: ${POSTGRES_PASSWORD}
+      
+      # --- RABBITMQ ---
       SPRING_RABBITMQ_HOST: minebugs-queue
+      SPRING_RABBITMQ_USERNAME: ${RABBITMQ_DEFAULT_USER}
+      SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_DEFAULT_PASS}
       RABBITMQ_EXCHANGE: ${RABBITMQ_EXCHANGE}
       RABBITMQ_QUEUE_MAPPING: ${RABBITMQ_QUEUE_MAPPING}
       RABBITMQ_ROUTING_MAPPING: ${RABBITMQ_ROUTING_MAPPING}
-      MINIO_URL: http://minebugs-minio:9000
-      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
-      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
-      MINIO_BUCKET: ${MINIO_BUCKET}
+      RABBITMQ_QUEUE_SIMULATION: ${RABBITMQ_QUEUE_SIMULATION}
+      RABBITMQ_ROUTING_SIMULATION: ${RABBITMQ_ROUTING_SIMULATION}
+      
+      # --- STORAGE (RustFS/MinIO) ---
+      S3_URL: http://minebugs-rustfs:9000
+      S3_ACCESS_KEY: ${MINIO_ROOT_USER}
+      S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      S3_BUCKET: ${MINIO_BUCKET}
+      
+      # --- WORKERS ---
       APP_WORKER_TOKEN: ${APP_WORKER_TOKEN}
+      
+      # --- KEYCLOAK (Rete interna) ---
+      KEYCLOAK_ISSUER_URI: http://localhost/auth/realms/minebugs
+      KEYCLOAK_JWK_URI: http://minebugs-keycloak:8080/auth/realms/minebugs/protocol/openid-connect/certs
     networks:
       - minebugs-net
 
-  # Next.js Frontend
   frontend:
     image: mandringo02/minebugs-demo-v2-frontend:latest
     container_name: minebugs-frontend
     restart: unless-stopped
+    extra_hosts:
+      - "localhost:host-gateway"
     depends_on:
       - backend
     environment:
       NODE_ENV: ${NODE_ENV}
       INTERNAL_BACKEND_URL: http://minebugs-backend:8080
+      BACKEND_URL: http://minebugs-backend:8080
+      BACKEND_BASE_URL: http://minebugs-backend:8080
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
+      KEYCLOAK_ISSUER: ${KEYCLOAK_ISSUER}
+      KC_LOCAL_URL: ${KC_LOCAL_URL}
+      CONTAINER_HOSTNAME_URL: ${CONTAINER_HOSTNAME_URL}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM}
     networks:
       - minebugs-net
 
-  # Nginx Gateway
   nginx:
     image: mandringo02/minebugs-demo-v2-gateway:latest
     container_name: minebugs-gateway
@@ -159,11 +204,6 @@ services:
     networks:
       - minebugs-net
 
-  # ==========================================
-  # 3. WORKERS LAYER
-  # ==========================================
-
-  # Taxa Mapping Worker
   worker-mapping:
     image: mandringo02/minebugs-demo-v2-worker-mapping:latest
     container_name: minebugs-worker-mapping
@@ -171,7 +211,7 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-      minio:
+      rustfs:
         condition: service_healthy
       backend:
         condition: service_started
@@ -192,7 +232,6 @@ services:
     networks:
       - minebugs-net
 
-  # Simulation Worker
   worker-simulation:
     image: mandringo02/minebugs-demo-v2-worker-simulation:latest
     container_name: minebugs-worker-simulation
@@ -200,12 +239,10 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
-      minio:
+      rustfs:
         condition: service_healthy
       backend:
         condition: service_started
-      minio-seeder:
-        condition: service_completed_successfully
     environment:
       RABBITMQ_HOST: minebugs-queue
       RABBITMQ_EXCHANGE: ${RABBITMQ_EXCHANGE}
@@ -218,23 +255,16 @@ services:
       MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
       MINIO_BUCKET: ${MINIO_BUCKET}
       MINIO_SECURE: "False"
-      MINIO_BUCKET_REF: ${MINIO_BUCKET_REF}
-      AGORA_ZIP_KEY: ${AGORA_ZIP_KEY}
       WORK_DIR_BASE: ${WORK_DIR_BASE}
       AGORA_MODELS_PATH: ${AGORA_MODELS_PATH}
       SOLVER_BINARY_PATH: ${SOLVER_BINARY_PATH}
     networks:
       - minebugs-net
 
-# ==========================================
-# 4. VOLUMES
-# ==========================================
-
 volumes:
   db_data_prod:
   rabbit_data_prod:
-  minio_data_prod:
-  minio_zip_cache:
+  rustfs-data:
 
 networks:
   minebugs-net:
