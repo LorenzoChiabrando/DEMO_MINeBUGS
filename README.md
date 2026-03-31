@@ -10,47 +10,37 @@ Ensure that **Docker**, **Docker Compose**, and **Make** are installed on your s
 
 ### Execution
 
-**1. Start the services**
+**1. Start the services with**
 
-- **Option A: Make (Recommended)**  
-  Automatically handles database seeding logic.
   
   ```bash
-  make up
+  ./start_demo.sh
   ```
 
 - **Option B: Docker Compose**
 
-  - **First Run (Seed DB)**
 
     ```bash
-    docker compose --profile init up
+    docker compose -f docker-compose.prod.yml up -d
     ```
 
-  - **Regular Run**
-
-    ```bash
-    docker compose up -d
-    ```
 
 **Important: Initialization Period**
 
-The initial startup requires approximately **5 to 10 minutes** to load and index the **AGORA2** database. The service may appear unresponsive during this phase. Wait for this process to complete.
+The initial startup requires approximately **10 to 15 minutes** to load and index the **AGORA2** database. The service may appear unresponsive during this phase. Wait for this process to complete.
 
 **2. Access the Application**
 
 Once the initialization is finished, access the web interface via your browser at:
 
-- http://localhost:3000
+- http://localhost
 
 ## Monitoring
 
 To monitor the database loading progress and verify when the service is ready:
 
 ```bash
-make logs
-# OR
-docker compose logs -f
+docker compose -f docker-compose.prod.yml logs 
 ```
 
 ## Shutdown
@@ -58,9 +48,7 @@ docker compose logs -f
 To stop the service:
 
 ```bash
-make down
-# OR
-docker compose down
+docker compose -f docker-compose.prod.yml down
 ```
 
 ## Example Datasets
@@ -69,7 +57,7 @@ The repository includes sample files to help you test the upload and mapping fun
 
 ### Custom Diet Configuration
 
-- **Location:** `diet_example/true-high-fibre.json`
+- **Location:** `diet_example/high_fiber__customized__diet.json`
 - **Usage:** Use this JSON file to test the custom diet upload feature. It provides a template for defining a specific nutritional profile (e.g., high fibre).
 
 ### Community Mapping Inputs
@@ -78,3 +66,4 @@ The repository includes sample files to help you test the upload and mapping fun
 - **Usage:** Use these CSV files to verify the taxonomic mapping capabilities of the service:
   - `big_community.csv`: A generic large dataset to test processing capacity.
   - `multiple_sclerosis.csv`: A specific case study dataset for mapping tests.
+  - `multiple_sclerosis_with_weights.csv`: Variant of the one above with relative abundance.

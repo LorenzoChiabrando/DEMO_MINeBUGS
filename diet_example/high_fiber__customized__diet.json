@@ -1,0 +1,767 @@
+{
+  "diet": {
+    "name": "High fiber (Customized)",
+    "fluxes": [
+      {
+        "communityReaction": "EX_12dgr180(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_26dap_M(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_2dmmq8(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_2obut(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_3mop(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_4abz(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_4hbz(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_5mthf(u)",
+        "fluxValue": -0.026191
+      },
+      {
+        "communityReaction": "EX_ac(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_acgam(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_acnam(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ade(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_adn(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_adocbl(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ala_D(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ala_L(u)",
+        "fluxValue": -59.061298
+      },
+      {
+        "communityReaction": "EX_arab_L(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_arg_L(u)",
+        "fluxValue": -40.671707
+      },
+      {
+        "communityReaction": "EX_asn_L(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_asp_L(u)",
+        "fluxValue": -80.160521
+      },
+      {
+        "communityReaction": "EX_btn(u)",
+        "fluxValue": -0.047922
+      },
+      {
+        "communityReaction": "EX_but(u)",
+        "fluxValue": -0.072333
+      },
+      {
+        "communityReaction": "EX_ca2(u)",
+        "fluxValue": -33.020111
+      },
+      {
+        "communityReaction": "EX_cbl1(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_cgly(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_chol(u)",
+        "fluxValue": -41.251
+      },
+      {
+        "communityReaction": "EX_chsterol(u)",
+        "fluxValue": -1.053036
+      },
+      {
+        "communityReaction": "EX_cit(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_cl(u)",
+        "fluxValue": -231.445012
+      },
+      {
+        "communityReaction": "EX_cobalt2(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_crn(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_csn(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_cu2(u)",
+        "fluxValue": -4.732792
+      },
+      {
+        "communityReaction": "EX_cys_L(u)",
+        "fluxValue": -13.826798
+      },
+      {
+        "communityReaction": "EX_cytd(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_dad_2(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_dcyt(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ddca(u)",
+        "fluxValue": -0.101851
+      },
+      {
+        "communityReaction": "EX_dgsn(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_drib(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_duri(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_etoh(u)",
+        "fluxValue": -22.792196
+      },
+      {
+        "communityReaction": "EX_fald(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_fe2(u)",
+        "fluxValue": -0.424456
+      },
+      {
+        "communityReaction": "EX_fe3(u)",
+        "fluxValue": -0.424456
+      },
+      {
+        "communityReaction": "EX_fol(u)",
+        "fluxValue": -1
+      },
+      {
+        "communityReaction": "EX_for(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_fru(u)",
+        "fluxValue": -157.327293
+      },
+      {
+        "communityReaction": "EX_fum(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_gal(u)",
+        "fluxValue": -1.010236
+      },
+      {
+        "communityReaction": "EX_gam(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_glc_D(u)",
+        "fluxValue": -120.210995
+      },
+      {
+        "communityReaction": "EX_glcn(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_gln_L(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_glu_L(u)",
+        "fluxValue": -130.815459
+      },
+      {
+        "communityReaction": "EX_gly(u)",
+        "fluxValue": -60.782492
+      },
+      {
+        "communityReaction": "EX_glyc(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_glyc3p(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_glyleu(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_glymet(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_glypro(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_gsn(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_gthox(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_gthrd(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_gua(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_h(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_h2(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_h2o(u)",
+        "fluxValue": -181671.336776
+      },
+      {
+        "communityReaction": "EX_h2s(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_hdca(u)",
+        "fluxValue": -34.447143
+      },
+      {
+        "communityReaction": "EX_his_L(u)",
+        "fluxValue": -17.219663
+      },
+      {
+        "communityReaction": "EX_hxan(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ile_L(u)",
+        "fluxValue": -41.932251
+      },
+      {
+        "communityReaction": "EX_indole(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ins(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_k(u)",
+        "fluxValue": -116.447774
+      },
+      {
+        "communityReaction": "EX_lac_L(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_lcts(u)",
+        "fluxValue": -26.57468
+      },
+      {
+        "communityReaction": "EX_Lcystin(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_leu_L(u)",
+        "fluxValue": -63.317919
+      },
+      {
+        "communityReaction": "EX_lnlc(u)",
+        "fluxValue": -66.472825
+      },
+      {
+        "communityReaction": "EX_lys_L(u)",
+        "fluxValue": -46.346763
+      },
+      {
+        "communityReaction": "EX_mal_L(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_malt(u)",
+        "fluxValue": -0.803397
+      },
+      {
+        "communityReaction": "EX_man(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_melib(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_met_L(u)",
+        "fluxValue": -12.669952
+      },
+      {
+        "communityReaction": "EX_metsox_S_L(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_mg2(u)",
+        "fluxValue": -31.155318
+      },
+      {
+        "communityReaction": "EX_mn2(u)",
+        "fluxValue": -0.174378
+      },
+      {
+        "communityReaction": "EX_mnl(u)",
+        "fluxValue": -2.691196
+      },
+      {
+        "communityReaction": "EX_mqn7(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_mqn8(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_na1(u)",
+        "fluxValue": -147.91188
+      },
+      {
+        "communityReaction": "EX_nac(u)",
+        "fluxValue": -0.479929
+      },
+      {
+        "communityReaction": "EX_ncam(u)",
+        "fluxValue": -0.216377
+      },
+      {
+        "communityReaction": "EX_nh4(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_nmn(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_no2(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_no3(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ocdca(u)",
+        "fluxValue": -9.424142
+      },
+      {
+        "communityReaction": "EX_orn(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_orot(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_phe_L(u)",
+        "fluxValue": -29.697934
+      },
+      {
+        "communityReaction": "EX_pheme(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_pi(u)",
+        "fluxValue": -22.336066
+      },
+      {
+        "communityReaction": "EX_pime(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_pnto_R(u)",
+        "fluxValue": -5.485114
+      },
+      {
+        "communityReaction": "EX_pro_L(u)",
+        "fluxValue": -50.904669
+      },
+      {
+        "communityReaction": "EX_ptrc(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_pydam(u)",
+        "fluxValue": -0.499406
+      },
+      {
+        "communityReaction": "EX_pydx(u)",
+        "fluxValue": -0.505498
+      },
+      {
+        "communityReaction": "EX_pydx5p(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_pydxn(u)",
+        "fluxValue": -0.499475
+      },
+      {
+        "communityReaction": "EX_q8(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_rib_D(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_ribflv(u)",
+        "fluxValue": -0.689492
+      },
+      {
+        "communityReaction": "EX_sbt_D(u)",
+        "fluxValue": -6.569952
+      },
+      {
+        "communityReaction": "EX_ser_L(u)",
+        "fluxValue": -52.114944
+      },
+      {
+        "communityReaction": "EX_sheme(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_so4(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_spmd(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_starch1200(u)",
+        "fluxValue": -0.417683
+      },
+      {
+        "communityReaction": "EX_strch1(u)",
+        "fluxValue": -45.113962
+      },
+      {
+        "communityReaction": "EX_succ(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_sucr(u)",
+        "fluxValue": -137.117966
+      },
+      {
+        "communityReaction": "EX_thf(u)",
+        "fluxValue": -0.000271
+      },
+      {
+        "communityReaction": "EX_thm(u)",
+        "fluxValue": -7.235601
+      },
+      {
+        "communityReaction": "EX_thr_L(u)",
+        "fluxValue": -38.258946
+      },
+      {
+        "communityReaction": "EX_thymd(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_tre(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_trp_L(u)",
+        "fluxValue": -6.192992
+      },
+      {
+        "communityReaction": "EX_ttdca(u)",
+        "fluxValue": -0.787507
+      },
+      {
+        "communityReaction": "EX_tyr_L(u)",
+        "fluxValue": -21.268375
+      },
+      {
+        "communityReaction": "EX_ura(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_urea(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_uri(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_val_L(u)",
+        "fluxValue": -50.978648
+      },
+      {
+        "communityReaction": "EX_xan(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_xyl_D(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_zn2(u)",
+        "fluxValue": -0.2448
+      },
+      {
+        "communityReaction": "EX_10fthf(u)",
+        "fluxValue": -0.000255
+      },
+      {
+        "communityReaction": "EX_7thf(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_CE2510(u)",
+        "fluxValue": -1.006715
+      },
+      {
+        "communityReaction": "EX_CE4843(u)",
+        "fluxValue": -0.038034
+      },
+      {
+        "communityReaction": "EX_acmana(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_adpcbl(u)",
+        "fluxValue": -0.000003
+      },
+      {
+        "communityReaction": "EX_adrn(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_amet(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_amp(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_arab_D(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_arach(u)",
+        "fluxValue": -0.667592
+      },
+      {
+        "communityReaction": "EX_arachd(u)",
+        "fluxValue": -0.359587
+      },
+      {
+        "communityReaction": "EX_ascb_L(u)",
+        "fluxValue": -1.513852
+      },
+      {
+        "communityReaction": "EX_avite1(u)",
+        "fluxValue": -6.853862
+      },
+      {
+        "communityReaction": "EX_carn(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_caro(u)",
+        "fluxValue": -0.013132
+      },
+      {
+        "communityReaction": "EX_cellul(u)",
+        "fluxValue": -0.237688
+      },
+      {
+        "communityReaction": "EX_chor(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_chtbs(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_clpnd(u)",
+        "fluxValue": -0.050167
+      },
+      {
+        "communityReaction": "EX_coa(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_creat(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_crvnc(u)",
+        "fluxValue": -0.384328
+      },
+      {
+        "communityReaction": "EX_dca(u)",
+        "fluxValue": -0.043444
+      },
+      {
+        "communityReaction": "EX_dlnlcg(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_doco13ac(u)",
+        "fluxValue": -0.049887
+      },
+      {
+        "communityReaction": "EX_docosac(u)",
+        "fluxValue": -0.394316
+      },
+      {
+        "communityReaction": "EX_elaid(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_glu_D(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_hco3(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_hdcea(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_hista(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_hpdca(u)",
+        "fluxValue": -0.202603
+      },
+      {
+        "communityReaction": "EX_i(u)",
+        "fluxValue": -0.003661
+      },
+      {
+        "communityReaction": "EX_lanost(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_lgnc(u)",
+        "fluxValue": -0.166975
+      },
+      {
+        "communityReaction": "EX_lnlnca(u)",
+        "fluxValue": -22.76318
+      },
+      {
+        "communityReaction": "EX_ocdcea(u)",
+        "fluxValue": -130.212461
+      },
+      {
+        "communityReaction": "EX_octa(u)",
+        "fluxValue": -0.015502
+      },
+      {
+        "communityReaction": "EX_phyQ(u)",
+        "fluxValue": -0.093631
+      },
+      {
+        "communityReaction": "EX_ptdca(u)",
+        "fluxValue": -0.072103
+      },
+      {
+        "communityReaction": "EX_retinol(u)",
+        "fluxValue": -1.099662
+      },
+      {
+        "communityReaction": "EX_so3(u)",
+        "fluxValue": -0.1
+      },
+      {
+        "communityReaction": "EX_sprm(u)",
+        "fluxValue": -50
+      },
+      {
+        "communityReaction": "EX_strdnc(u)",
+        "fluxValue": 0
+      },
+      {
+        "communityReaction": "EX_ttdcea(u)",
+        "fluxValue": -0.031285
+      },
+      {
+        "communityReaction": "EX_urate(u)",
+        "fluxValue": -6.319184
+      },
+      {
+        "communityReaction": "EX_vitd3(u)",
+        "fluxValue": -0.001534
+      },
+      {
+        "communityReaction": "EX_xylt(u)",
+        "fluxValue": -0.276051
+      }
+    ]
+  }
+}
