@@ -37,7 +37,7 @@ echo ""
 echo "[2/5] Checking configuration file..."
 if [ ! -f "$COMPOSE_FILE" ]; then
     echo "[ERROR] File '$COMPOSE_FILE' not found."
-    echo "Make sure you renamed 'docker-compose.prod.yml' to 'docker-compose.yml'."
+    echo "Make sure you are running this script from the 'demo/' directory."
     exit 1
 fi
 echo "[OK] docker-compose file found!"
