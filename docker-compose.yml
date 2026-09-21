@@ -199,6 +199,8 @@ services:
     restart: unless-stopped
     ports:
       - "${PORT_HTTP}:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - frontend
       - backend
